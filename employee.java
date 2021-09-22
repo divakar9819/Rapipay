@@ -1,40 +1,114 @@
-package A1;
-import java.util.Scanner;
+package basicArray;
+import java.util.Random;
 
-public class employee {
+/*
+Below is the Employee Class Containing 2 arg contructor.
+Note: - You cannot add new constructor
+
+Requirement
+1) Create EmployeeMainClass containing main method
+2) Create 3 Employees through arrays
+3) Create method which return all employees and print their values in main class
+   through toString()
+3) Write code to search Employee by id or name and provide designation through 
+   setter method.
+4) Write code to return employee based on Id and print their values in main class through toString()
+5) Write Code to return employees based on designation and print their values in main class through toString()
+
+ */
+
+public class Employee {
+	private int id;
+	private String name;
+	private int salary;
+	private String designation;
 	
-	float hr_pay;
-	int hr_reg;
-	int hr_over;
-	
-	final int fixAmount = 500;
-	
-	public void setData(int hr_reg,int hr_over) {
-		this.hr_reg = hr_reg;
-		this.hr_over = hr_over;
-	}
-	
-	public float calculateSalary() {
+	public Employee(String name,int salary) {
 		
-		this.hr_pay = fixAmount + this.hr_over*fixAmount*1.5f;
-		return this.hr_pay;
+		Random random = new Random();
+		this.name = name;
+		this.salary = salary;
+        this.id = random.nextInt(1000); // auto generated through random number
 	}
 	
-	public void display() {
-		System.out.println("Total salary is: "+this.hr_pay);
+	public String getDesignation() {
+		return designation;
+	}
+
+	public void setDesignation(String designation) {
+		this.designation = designation;
+	}
+
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getSalary() {
+		return salary;
+	}
+	public void setSalary(int salary) {
+		this.salary = salary;
+	}
+
+	//3
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + ", designation=" + designation + "]";
 	}
 	
-	public static void main(String[]args)
-	{
-		Scanner sc = new Scanner(System.in);
-		System.out.print("Enter employee working hour: ");
-		int rh = sc.nextInt();
-		int oh = sc.nextInt();
-		employee e1 = new employee();
-		e1.setData(rh,oh);
-		e1.calculateSalary();
-		e1.display();
+	
+	//4
+	public int searchEmployee(Employee emp[],int Id,String Name) {
 		
+		for(int i=0;i<emp.length;i++) {
+			
+			if(emp[i].id==Id||emp[i].name==Name) {
+				return i;
+			}
+		}
+		return -1;
 	}
+	
+	
+	//5
+	boolean searchEmployeeById(Employee emp[],int Id) {
+        for(int i=0;i<emp.length;i++) {
+			
+			if(emp[i].id==Id) {
+				return true;
+			}
+		}
+        
+        return false;
+	}
+	
+	
+	//6
+	boolean searchEmployeeByDesignation(Employee emp[],String Designation) {
+        for(int i=0;i<emp.length;i++) {
+			
+			if(emp[i].designation!=null &&emp[i].designation ==Designation) {
+				return true;
+			}
+		}
+        
+        return false;
+	}
+	
 
 }
+
+
+
+
+	
+	
+	
+
