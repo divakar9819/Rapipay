@@ -1,0 +1,20 @@
+_format_version: "2.1"
+_transform: true
+
+services: 
+  - name: otp-service
+    url: https://localhost:8080/sendOtp
+    routes: 
+      - name: otp-service-routes
+        paths: 
+          - /sendOtp
+        strip_path: true
+  - name: otpservice
+    url: https://otpservice:8080/otp/app/v1/verifyOTP
+    routes: 
+      - name: otp-service-routes
+        paths: 
+          - /validateOtp
+        strip_path: true
+  
+ 
