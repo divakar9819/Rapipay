@@ -1,0 +1,15 @@
+version: "3"
+services:
+  api-database:
+    image: mongo:3.2.4
+    hostname: mongo_db
+    container_name: mongo_db
+    ports:
+      - "27017:27017"
+    command: --smallfiles
+  api:
+    image: docker-kotlin-otp.jar
+    ports:
+      - "8086:8086"
+    links:
+      - mongo_db
